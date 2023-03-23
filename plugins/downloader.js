@@ -1,6 +1,6 @@
 //created by @inrl
 //more featurs comming soon
-const { inrl, isUrl, googleIt, wikiMedia, ringTone,getYtV, getYtA, weather, movie, getFilm, Insta, mediafire } = require('../lib');
+const { inrl, isUrl, googleIt, wikiMedia, ringTone,getYtV, getYtA, weather, movie, getFilm, Insta, mediafire, twitter, FaceBook } = require('../lib');
 const Config = require('../config');
 const util = require('util');
 const {getVar}=require('../lib/database/variable');
@@ -143,7 +143,7 @@ inrl(
         match = match || message.quoted.text;
         }
         if(!match) return message.send('need instgram url');
-        return await Insta(message, client,match.trim());
+        return await Insta(message, client, match);
          }
 );
 inrl(
@@ -180,3 +180,25 @@ inrl(
 	async (message, client, match) => {
     return await getFilm(message, client, match)
   });
+     inrl(
+	   {
+	    pattern: ['twitter','tw'],
+	    desc: 'To get twitter video',
+        sucReact: "💯",
+        category: ["system", "all"],
+        type :'download'
+	   },
+	async (message, client, match) => {
+	return await twitter(match, message, client)
+	});
+      inrl(
+	   {
+	    pattern: ['fb','facebook'],
+	    desc: 'To get fb video',
+        sucReact: "💯",
+        category: ["system", "all"],
+        type :'download'
+	   },
+	async (message, client, match) => {
+	return await FaceBook(match, message, client)
+	});
