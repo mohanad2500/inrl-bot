@@ -1,4 +1,4 @@
-const { inrl, fetchJson, sendUrl, tinyUrl, webSs, pdfGen, BufferToFile, AudioMetaData  } = require('../lib')
+const { inrl, fetchJson, getBuffer, sendUrl, tinyUrl, webSs, pdfGen, BufferToFile, AudioMetaData  } = require('../lib')
 const {getVar} = require('../lib/database/variable');
 const fs = require('fs');
 const { readFile, writeFile } = require('fs/promises')
@@ -45,26 +45,23 @@ pack = match || STICKER_DATA.split(',')[0];
 auth = STICKER_DATA.split(',')[1];
 }
 let media = await message.quoted.download();
-client.sendFile(message.from, media, "", message, {
+return await client.sendFile(message.from, media, "", message, {
           asSticker: true,
           author: auth,
           packname: pack,
           categories: ["😄"],
         });
 }else if(message.quoted.audioMessage){
-let _message = message.quoted.audioMessage
-let media = await client.downloadAndSaveMediaMessage(_message)
 let text = message.client.text;
 if(text.includes(' ')){ text = text.trim() }
 let img = AUDIO_DATA.split(',')[2];
 if(img.includes(' ')){ img = img.trim() }
 img = text.split(',')[2] ? text.split(',')[2] : img;
-let imgForaUdio = await BufferToFile(img,'./media/imagForAudio.jpg');
-    await AudioMetaData(imgForaUdio, media, message, client);
-    return await fs.unlinkSync(media);
+    let imgForaUdio = await getBuffer(img);
+    return await AudioMetaData(imgForaUdio, await message.quoted.download(), message, client);
   }
 }catch (e){
-message.reply(e.toString());
+return await message.reply(e.toString());
 }
 })
 inrl({pattern: ['emojimix'], desc: "two emojis to single sticker",sucReact: "🤌",  category: ["all"],type : "general"}, async (message, client, match) => {
