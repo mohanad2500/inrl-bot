@@ -1,4 +1,18 @@
-const { inrl } = require('../lib/');
+const { inrl } = require('../lib/'),
+      {BASE_URL} = require('../config'),
+      got = require('got');
+
+inrl({ pattern: ["ai"], sucReact: "🤝", category: ["all", "create"], type : "eva"},
+  async (message, client, match) => {
+  if(message.quoted){
+ match = match || message.quoted.text;
+ }
+   if(!match) return await message.reply('need text to get ai result');
+   let {body} = await got(`${BASE_URL}api/chatgpt?text=${match.trim()}`);
+   body = JSON.parse(body).result;
+   return await client.sendMessage(message.from, {text:body});
+   });
+
 inrl(
 	   {
 		pattern: ['jid'],
