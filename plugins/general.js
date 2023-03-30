@@ -2,17 +2,26 @@ const { inrl } = require('../lib/'),
       {BASE_URL} = require('../config'),
       got = require('got');
 
-inrl({ pattern: ["ai"], sucReact: "🤝", category: ["all", "create"], type : "eva"},
+inrl({ pattern: ["gpt"], sucReact: "🤝", category: ["all", "create"], type : "eva"},
   async (message, client, match) => {
+try {
   if(message.quoted){
  match = match || message.quoted.text;
  }
    if(!match) return await message.reply('need text to get ai result');
-   let {body} = await got(`${BASE_URL}api/chatgpt?text=${match.trim()}`);
+   let {body} = await got(`${BASE_URL}api/chatgpt?text=${match}`);
    body = JSON.parse(body).result;
    return await client.sendMessage(message.from, {text:body});
-   });
-
+} catch(e){
+return await message.send('provided API is not valid');
+}
+  });
+inrl({ pattern: ["scan"], sucReact: "🤝", category: ["all", "create"], type : "user"},
+  async (message, client, match) => {
+  let ttinullimage = `${BASE_URL}server/scan`;
+  const Message = { image: { url:  ttinullimage }, caption:"scan within 23.5 seconds"};
+  return await client.sendMessage( message.from, Message).catch((e)=>message.reply('_undefined error_ *pleaee try again later*'));
+});
 inrl(
 	   {
 		pattern: ['jid'],
