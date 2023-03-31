@@ -1,4 +1,4 @@
-const { getBuffer } = require('../../lib/cloud');
+const { getBuffer } = require('../../lib/');
 
 async function mensionMp3(mP3){
 mP3 = mP3.replaceAll(' ','')
