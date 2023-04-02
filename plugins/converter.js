@@ -80,6 +80,7 @@ inrl({pattern: ['tts'], desc: "to get text as audio ", sucReact: "💔", categor
  if (!match)  return await client.sendMessage( message.from, { text: 'Enter A text'}, { quoted: message });
  let lang = match.split('{')[1]?.replace('}','')?.trim() || "en";
  try {
+ match = match.split('{')[0] || match;
  let mm = `${BASE_URL}api/tts?text=${encodeURIComponent(match)}&lang=${lang}`;
  return await client.sendMessage(message.from, {audio:{url:mm},mimetype: "audio/mpeg",ptt: false});
          } catch (e){
