@@ -1,9 +1,8 @@
 //created by @inrl
 const { inrl, sendPhoto, sendVideo, sendVoice, sendGif, sendBassAudio, sendSlowAudio, sendBlownAudio, sendDeepAudio, sendErrapeAudio, sendFastAudio, sendFatAudio, sendNightcoreAudio, sendReverseAudio, sendSquirrelAudio, sendMp4AsMp3 } = require('../lib');
-const googleTTS = require('google-translate-tts');
 const translatte = require("translatte");
 const {getVar}=require('../lib/database/variable');
-
+const {BASE_URL} = require('../config');
    inrl({ pattern: ['photo'], desc: "to convert webp to img",sucReact: "⚒️",  category: ["all"], type : "converter" }, async (message, client) => {
    if(!message.quoted) return;
    if(!message.quoted.stickerMessage)  return message.reply('reply to  a sticker');
@@ -75,24 +74,14 @@ inrl({ pattern: ['squirrel'], desc: "to convert audio to given cmd",sucReact: "�
      return await  sendSquirrelAudio(message, client);
 });
 inrl({pattern: ['tts'], desc: "to get text as audio ", sucReact: "💔", category: ['all'], type : "converter" }, (async (message, client, match) => {
+ if(!message.quoted){
+ match = match || message.quoted.text;
+ }
  if (!match)  return await client.sendMessage( message.from, { text: 'Enter A text'}, { quoted: message });
- let data = await getVar();
- let {LANG} = data.data[0];
-  try {
-            let lang, TEXT;
-            let split = match.split(',');
-            TEXT = split[0] || match;
-            lang = split[1] ? split[1].trim() : LANG.trim();
-             
-                LANG = lang;
-                ttsMessage = TEXT;
-                SPEED = 1.0
-    
-            let buffer = await googleTTS.synthesize({
-                text: ttsMessage,
-                voice: LANG
-            });
-          return await  client.sendMessage( message.from, { audio:buffer, mimetype: "audio/mp4",ptt: false }, { quoted: message } );
+ let lang = match.split('{')[1]?.replace('}','')?.trim() || "en";
+ try {
+ let mm = `${BASE_URL}api/tts?text=${encodeURIComponent(match)}&lang=${lang}`;
+ return await client.sendMessage(message.from, {audio:{url:mm},mimetype: "audio/mpeg",ptt: false});
          } catch (e){
          message.reply(JSON.stringify(e))
          }
