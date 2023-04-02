@@ -1,6 +1,6 @@
 //created by @inrl
 const lnn = "ANIME MAKER";
-const { errorMessage, pass, inrl, config, anime, ffpack, ff1,ff2,ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10, ff11, ff12, ff13, ff14, ff15, ff16, ff17, ff18, ff19, ff20, ff21, ff22, ff23, ff24, ff25, ff26, ff27, ff28, ff29, ff30, ff31, ff32, ff33, ff34, ff35, ff36, ff37, ff38, ff39, ff40, ff41, ff42, ff43, ff44, ff45, ff46, ff47, ff48, ff49, ff50, animepack, an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15, an16, an17, bts, robote, spiderman, tentacion, youAreBad, ansay, ch, trumb, inrlQuita }  = require('../lib')
+const { errorMessage, pass, inrl, anime, ffpack, ff1,ff2,ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10, ff11, ff12, ff13, ff14, ff15, ff16, ff17, ff18, ff19, ff20, ff21, ff22, ff23, ff24, ff25, ff26, ff27, ff28, ff29, ff30, ff31, ff32, ff33, ff34, ff35, ff36, ff37, ff38, ff39, ff40, ff41, ff42, ff43, ff44, ff45, ff46, ff47, ff48, ff49, ff50, animepack, an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15, an16, an17, bts, robote, spiderman, tentacion, youAreBad, ansay, ch, trumb, inrlQuita }  = require('../lib')
 const fs = require('fs');
 const axios = require('axios');
 const Config = require('../config');
@@ -1793,17 +1793,6 @@ if (text.includes(',')) {  let split = text.split(',');text1 = split[0];text2 = 
   await maker.textpro('https://textpro.me/create-a-summer-neon-light-text-effect-online-1076.html', [texts,txt])
   .then( async (data) => {  return await client.sendMessage( message.from, { image: { url: data }, caption: CAPTION }, { quoted: message }); })
   .catch( async (err) => {  return await client.sendErrorMessage( message.from, err, message.key, message ); });
-});
-config.api.textpro.takes1.map(logo => {
-  const { pattern, textLenth, id } = logo; 
-  const url = config.api.textpro.domain + id;
-  inrl( { pattern, sucReact: "💗", category: ['logo'], usage: '<word>',type :'logo-menu' }, async (message, client) => {
-    if (!message.client.text) {  return await client.sendMessage( message.from, { text: message.reply(N_T) }, { quoted: message } ); };
-    if (message.client.text.length >= textLenth) {  return await client.sendMessage( message.from, { text: message.reply(T_L) }, { quoted: message } ); };
-    await maker.textpro( url, [message.client.text, 'inrl'])
-    .then( async (data) => {  return await client.sendMessage( message.from, { image: { url: data }, caption: CAPTION }, { quoted: message }); })
-    .catch( async (err) => {  return await client.sendErrorMessage( message.from, err, message.key, message ); });
-  });
 });
 inrl({pattern: ['inrl'], desc: "to check i cmds", sucReact: "🙀", category: ['all'],type : "quita"},   async (message, client) => {
 	  const txts =await inrlQuita();
