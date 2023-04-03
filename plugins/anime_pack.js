@@ -1,7 +1,6 @@
 //created by @inrl
-const { inrl, pass, animewifu, animenom, animefox, animesmug, hentaiWifu, hentaiNeko, hentaiTrap, animeawoo, animemegumin, animemehold, animehighfive, animecringe, animedance, animehappy, animeblush, animeglomp, animewave, animepoke, animewink, animebonk, animebully, animeyeet, animeneko, animecuddle, animeslap, animepat, animegood, animehug, animekiss, animewlp, animespank, animecry, animekill, animelick, animebite } = require('../lib');
+const { PASS, inrl, pass, animewifu, animenom, animefox, animesmug, hentaiWifu, hentaiNeko, hentaiTrap, animeawoo, animemegumin, animemehold, animehighfive, animecringe, animedance, animehappy, animeblush, animeglomp, animewave, animepoke, animewink, animebonk, animebully, animeyeet, animeneko, animecuddle, animeslap, animepat, animegood, animehug, animekiss, animewlp, animespank, animecry, animekill, animelick, animebite } = require('../lib');
 const Config = require('../config');
-let crtPass = pass.PASS;
 const {getVar} = require('../lib/database/variable');
 
 inrl({ pattern: ['animewifu'], desc: "thus send random anime imgs, maybe bad",sucReact: "💗",  category: ["anime"], type : "fun"}, async (message, client) => {
@@ -81,7 +80,7 @@ if(!message.client.isCreator) {
 await message.reply('only for owner\nblocking you🤌');
 return await client.updateBlockStatus(message.from, "block")
 }
-if(PASSWORD === crtPass){
+if(PASSWORD === PASS){
 let ttimg = await hentaiWifu();
 let prefix = PREFIX== 'false'?'':PREFIX;
 let buttons = [
@@ -103,7 +102,7 @@ if(!message.client.isCreator) {
 await message.reply('only for owner\nblocking you🤌');
 return await client.updateBlockStatus(message.from, "block")
 }
-if(PASSWORD === crtPass){
+if(PASSWORD === PASS){
 let ttimg = await hentaiNeko();
 let data = await getVar();
 const { FOOTER, PREFIX } =  data.data[0];
@@ -128,7 +127,7 @@ if(!message.client.isCreator) {
 await message.reply('only for owner\nblocking you🤌');
 return await client.updateBlockStatus(message.from, "block")
 }
-if(PASSWORD === crtPass){
+if(PASSWORD === PASS){
 let ttimg = await hentaiTrap();
 let prefix = PREFIX== 'false'?'':PREFIX;
 let buttons = [
