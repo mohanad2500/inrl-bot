@@ -74,13 +74,17 @@ inrl({ pattern: ['squirrel'], desc: "to convert audio to given cmd",sucReact: "�
      return await  sendSquirrelAudio(message, client);
 });
 inrl({pattern: ['tts'], desc: "to get text as audio ", sucReact: "💔", category: ['all'], type : "converter" }, (async (message, client, match) => {
- if(!message.quoted){
+try {
+ if(message.quoted){
  match = match || message.quoted.text;
  }
  if (!match)  return await client.sendMessage( message.from, { text: 'Enter A text'}, { quoted: message });
- let lang = match.split('{')[1]?.replace('}','')?.trim() || "en";
- try {
- match = match.split('{')[0] || match;
+ let slang = match.match('\\{([a-z]+)\\}');
+ let lang = "en";
+ if(slang){
+ lang = slang[1];
+ match = match.replace(slang[0],'');
+ }
  let mm = `${BASE_URL}api/tts?text=${encodeURIComponent(match)}&lang=${lang}`;
  return await client.sendMessage(message.from, {audio:{url:mm},mimetype: "audio/mpeg",ptt: false});
          } catch (e){
@@ -88,8 +92,8 @@ inrl({pattern: ['tts'], desc: "to get text as audio ", sucReact: "💔", categor
          }
         }));
 inrl({pattern: ['mp3','audio'], desc: "to get video as audio ", sucReact: "💥", category: ['all'], type : "converter" }, (async (message, client) => {
-          if(!message.quoted) return;
-  if(!message.quoted.audioMessage && !message.quoted.videoMessage)  return message.reply('reply to an video/mp4');
+     if(!message.quoted) return;
+     if(!message.quoted.audioMessage && !message.quoted.videoMessage)  return message.reply('reply to an video/mp4');
      return await  sendMp4AsMp3(message, client)
             }));
 inrl({pattern: ['trt'], desc: "to get video as audio ", sucReact: "💥", category: ['all'], type : "converter" }, async (message, client, match) => {
