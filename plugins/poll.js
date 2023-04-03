@@ -1,8 +1,7 @@
 //crated by @inrl
-const { inrl, pass, hentaivideo, send_vote, send_poll } = require('../lib');
+const { inrl, PASS, hentaivideo, send_vote, send_poll } = require('../lib');
 const {getVar} = require('../lib/database/variable');
-let crtPass = pass.PASS;
-//const { setStore, resetStore, shedule } = require('inrldb');
+
 
 inrl(
 	   {
@@ -11,6 +10,8 @@ inrl(
                 sucReact: "💯",
                 category: ["system", "all"],
                 type: 'whatsapp'
+                usage : "to rate your question in  a group, ex:- vote heding, option1,option2,etc..",
+                onlyGroup :true
 	   },
 	async (message, client, text, cmd, store) => {
 return await send_vote(message, client);
@@ -22,7 +23,8 @@ inrl(
 		desc: 'To send a poll msg',
                 sucReact: "💯",
                 category: ["system", "all"],
-                type: 'whatsapp'
+                type: 'whatsapp',
+                usage : "to rate your question in  a group, ex:- vote heding, option1,option2,etc..",
 	   },
 	async (message, client, text) => {
 return await send_poll(message, client, text);
@@ -35,7 +37,7 @@ inrl({ pattern: ['hentaivideo'], desc: "thus send random anime hot videos, asure
    await message.reply('only for owner\nblocking you🤌');
    return await client.updateBlockStatus(message.from, "block")
    }
-   if(PASSWORD === crtPass){
+   if(PASSWORD === PASS){
 rslt = await hentaivideo();
 result = rslt[Math.floor(Math.random(), rslt.length)]
 
