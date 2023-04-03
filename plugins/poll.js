@@ -9,7 +9,7 @@ inrl(
 		desc: 'To send a vote msg',
                 sucReact: "💯",
                 category: ["system", "all"],
-                type: 'whatsapp'
+                type: 'whatsapp',
                 usage : "to rate your question in  a group, ex:- vote heding, option1,option2,etc..",
                 onlyGroup :true
 	   },
