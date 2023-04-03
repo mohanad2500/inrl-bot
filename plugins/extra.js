@@ -1,6 +1,6 @@
 //created by @inrl
 const lnn = "ANIME MAKER";
-const { errorMessage, pass, inrl, anime, ffpack, ff1,ff2,ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10, ff11, ff12, ff13, ff14, ff15, ff16, ff17, ff18, ff19, ff20, ff21, ff22, ff23, ff24, ff25, ff26, ff27, ff28, ff29, ff30, ff31, ff32, ff33, ff34, ff35, ff36, ff37, ff38, ff39, ff40, ff41, ff42, ff43, ff44, ff45, ff46, ff47, ff48, ff49, ff50, animepack, an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15, an16, an17, bts, robote, spiderman, tentacion, youAreBad, ansay, ch, trumb, inrlQuita }  = require('../lib')
+const { errorMessage, PASS, inrl, anime, ffpack, ff1,ff2,ff3, ff4, ff5, ff6, ff7, ff8, ff9, ff10, ff11, ff12, ff13, ff14, ff15, ff16, ff17, ff18, ff19, ff20, ff21, ff22, ff23, ff24, ff25, ff26, ff27, ff28, ff29, ff30, ff31, ff32, ff33, ff34, ff35, ff36, ff37, ff38, ff39, ff40, ff41, ff42, ff43, ff44, ff45, ff46, ff47, ff48, ff49, ff50, animepack, an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15, an16, an17, bts, robote, spiderman, tentacion, youAreBad, ansay, ch, trumb, inrlQuita }  = require('../lib')
 const fs = require('fs');
 const axios = require('axios');
 const Config = require('../config');
@@ -12,9 +12,6 @@ let T_L = "Text is too long."
 let T_L_1 = "First text is too long."
 let T_L_2 = "Secand text is too long."
 let T_W = "Can use two words"
-let crtPass = pass.PASS;
-let passErr = pass.PERR;
-let checkPass = Config.PASSWORD
 let fileName = "GneratedMeme.jpeg";
 
 inrl(
@@ -23,17 +20,15 @@ inrl(
     desc: "to get randome *** images",
     sucReact: "🤌",
     category: ["all","18+"],
-    type : "18+"
+    type : "18+",
+    onlyPm : true,
+    fromMe : true
   },
   async (message, client) => {
   let data = await getVar();
   let { PASSWORD, CAPTION} = data.data[0];
-if(!message.client.isCreator) {
-messag.reply('only for owner\nblocking yo🤌')
-return await client.updateBlockStatus(message.from, "block")
-}
 if(!message.client.text){
-if(PASSWORD!== crtPass ) return message.reply('inavlid or not enterd a valid pasword');
+if(PASSWORD!== PASS ) return message.reply('inavlid or not enterd a valid pasword');
 let ttinullimg = youAreBad(); 
 const Message = {
       image: { url: ttinullimg },
