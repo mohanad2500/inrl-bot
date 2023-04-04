@@ -32,10 +32,13 @@ inrl({
 		desc: 'this send evaled data for your request',
                 sucReact: "💥",
                 category: ["system", "all"],
-                type : "owner"
+                type : "owner",
+                usage: "give evaled data for your script"
 	   },
-	async (message, client, match) => {
+	async (message, client) => {
  let m = message, c = conn = client, text = match;
+    if(!message.client.body.trim().startsWith('>') return;
+    let match = message.client.body.replace('>','').trim();
     try {
       let evaled = await eval(`(async () => { ${match} })()`);
       if (typeof match !== "string") evaled = await util.inspect(evaled);
