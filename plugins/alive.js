@@ -202,80 +202,26 @@ const GDM = "it sends good morning message";
 const GDN = "it sends Night message";
 
 inrl(
-  { pattern: ["gm","GoodMornig","gdmornig"], desc: GDM, sucReact: "💖", category: ["chat"], type :'chat' },
-  async (message, client) => {
-    var r_text = new Array();
-    r_text[0] = "❀🍃Good❀ ❀morning❀🥰❀ ";
-    r_text[1] = "☘️𝐺𝑜𝑜𝑑 🌅𝑚𝑜𝑟𝑛𝑖𝑛𝑔 💐 ";
-    r_text[2] = "🍃𝙶𝚘𝚘𝚍 🌻𝚖𝚘𝚛𝚗𝚒𝚗𝚐 🥰 ";
-    r_text[3] = "🍀𝗚𝗼𝗼𝗱 😘𝗺𝗼𝗿𝗻𝗶𝗻𝗴 🌸 ";
-    r_text[4] = "🌻𝓖𝓸𝓸𝓭 𝓶𝓸𝓻𝓷𝓲𝓷𝓰 💞 ";
-    r_text[5] = "🌼🅖🅞🅞🅓 🅜🅞🅡🅝🅘🅝🅖 🐶 ";
-    r_text[6] = "🍃Ⓖⓞⓞⓓ 🌈ⓜⓞⓡⓝⓘⓝⓖ 🥰 ";
-    const i = Math.floor(7 * Math.random());
-let returNtxt = await r_text[i] 
-    return await client.sendMessage( message.from, { text: returNtxt + message.client.pushName }, { quoted: message } );
-  }
-);
-
-inrl(
-  { pattern: ["evening"], desc: "good evening", sucReact: "💖", category: ["chat"], type :'chat'  },
-  async (message, client) => {
-    var r_text = new Array();
-r_text[0] = "😻ɢᴏᴏᴅ 💗ᴇᴠᴇɴɪɴɢ",
-r_text[1] = "❣️𝐺𝛩𝛩𝐷 💓𝛯𝛻𝛯𝛮𝛪𝛮𝐺",
-r_text[2] = "🥰ｇｏｏｄ 💞ｅｖｅｎｉｎｇ",
-r_text[3] = "🥳𝓰𝓸𝓸𝓭 💝𝓮𝓿𝓮𝓷𝓲𝓷𝓰",
-r_text[4] = "😍ムののり 💘乇√乇刀ﾉ刀ム",
-r_text[5] = "🤩ᎶᎧᎧᎴ 💕ᏋᏉᏋᏁᎥᏁᎶ",
-r_text[6] = "😛 ɠơơɖ 💔ɛ۷ɛŋıŋɠ"
-const i = Math.floor(7 * Math.random());
-let returNtxt = await r_text[i] 
-return await client.sendMessage( message.from, { text: returNtxt + message.client.pushName }, { quoted: message } );
-
-  }
-);
-
-inrl(
-  { pattern: ["gdnight"], desc: GDN, sucReact: "💖", category: ["chat"], type :'chat'  },
-  async (message, client) => {
-    var r_text = new Array();
-    r_text[0] = "😘𝙂𝙤𝙤𝙙 🙈𝙣𝙞𝙜𝙝𝙩 💫✨";
-    r_text[1] = "🤗𝓖𝓸𝓸𝓭 🧚‍♀𝓷𝓲𝓰𝓱𝓽 ❄️✨";
-    r_text[1] = "🌌❡០០ᖱ 🌙⩎ɨ❡ϦƬ 🌎";
-    r_text[3] = "😘ցօօժ ⭐️ղíցհԵ 💝";
-    r_text[4] = "🌃Ꮐᝪᝪᗞ 🙈ᑎᏆᏀᕼᎢ 💫✨";
-    const i = Math.floor(5 * Math.random());
-let returNtxt = await r_text[i] 
-return await client.sendMessage( message.from, { text: returNtxt + message.client.pushName }, { quoted: message, adReply: true } );
-  }
-);
-inrl(
-  { pattern: ["gdafternoon"], desc: GDN, sucReact: "💖", category: ["chat"], type :'chat'  },
-  async (message, client) => {
-    var r_text = new Array();
-    r_text[0] = "😘Ꮆㄖㄖᗪ 🥵卂千ㄒ乇尺几ㄖㄖ几💫✨";
-    r_text[1] = "🤗𝙂𝙤𝙤𝙙 💖𝙖𝙛𝙩𝙚𝙧𝙣𝙤𝙤𝙣❄️✨";
-    r_text[1] = "♢♞  𝐆Ⓞ𝐨๔ 𝐀ƒт𝔢𝓇Ňｏ𝐎ภ  💲🎀";
-    r_text[3] = "😘ɢᴏᴏᴅ ⭐️ᴀꜰᴛᴇʀɴᴏᴏɴ 💝";
-    r_text[4] = "🌃₲ØØĐ  🙈₳₣₮ɆⱤ₦ØØ₦💫✨";
-    const i = Math.floor(5 * Math.random());
-let returNtxt = await r_text[i] 
-return await client.sendMessage( message.from, { text: returNtxt + message.client.pushName }, { quoted: message, adReply: true } );
-  }
-);
-inrl(
 	   {
-		pattern: ['fancy'],
-		desc: 'To convert text to random style as you want',
+	 pattern: ['fancy'],
+	 desc: 'To convert text to random style as you want',
          sucReact: "🙀",
          category: ["system", "all"],
-         type : 'converter'
+         type : 'converter',
+         media: 'text',
+         usage : 'to convert texts to stylish example : fancy 10 inrl'
 	   },
 	async (message, client, match) => {
 	try {
-const text = message.client.text;
-if(!text){
+let num = 1,tNum;
+if(message.quoted){
+if(!isNaN(message.quoted.text.trim())){
+num = message.quoted.text.trim()
+    } else {
+match = match || message.quoted.text.trim();
+    }
+}
+if(!match){
 let NewText =`
 Enter A Text Quary
 _ex_ : Enter a text like this *fancy 55,hi*
@@ -340,16 +286,20 @@ _ex_ : Enter a text like this *fancy 55,hi*
 _ex_ : Enter a text like this *fancy 55,hi*`
 return await client.sendMessage(message.from, { text : NewText });
     }
-         let split = text.split(',');
-         Num = split[0] || match || "55";
-         Text = split[1] || "enter A text with number ex 31,text";
-if(message.quoted){
-Text = message.quoted.text||split[1]||"need text and key mr!";
+
+if(match.includes(',')){
+match = match.replace(',','');
+tNum = match.split(',')[1]?.trim();
 }
-let ThenText = await styletext(Text, Num)
+if(!isNaN(tNum)){
+num = match.split(',')[0].trim()
+} else {
+num = match.split(',')[1].trim()
+}
+let ThenText = await styletext(match, num)
 return await client.sendMessage(message.from, { text : ThenText });
  } catch (e){
- return message.reply('need key and values ex :- { fancy 5,hhi }')
+ return message.reply('need key and values ex :- fancy inrl md 10}')
         }
     }
 );
