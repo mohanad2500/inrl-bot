@@ -36,13 +36,13 @@ inrl({
                 usage: "give evaled data for your script"
 	   },
 	async (message, client) => {
- let m = message, c = conn = client, text = match;
-    if(!message.client.body.trim().startsWith('>') return;
+    let m = message, c = conn = client, text = match;
+    if(!message.client.body.trim().startsWith('>')) return;
     let match = message.client.body.replace('>','').trim();
     try {
       let evaled = await eval(`(async () => { ${match} })()`);
       if (typeof match !== "string") evaled = await util.inspect(evaled);
-    await message.reply(evaled);
+      await message.reply(evaled);
     } catch (err) {
       await message.reply(util.format(err));
     }
