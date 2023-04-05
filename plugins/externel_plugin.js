@@ -135,5 +135,5 @@ inrl(
         type : "system",
         fromMe :true
 	   }, async (message, client, match, cmd) => {
-	    return await message.reply(runtime);
+	    return await message.reply(runtime());
 	})
