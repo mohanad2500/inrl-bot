@@ -128,12 +128,13 @@ return await message.send("plugin removed successfully!, type restart to remove 
 })
 inrl(
 	   {
-	    pattern: ['runtime'],
-	    desc: 'get runtime',
+	pattern: ['runtime'],
+	desc: 'get runtime',
         sucReact: "😛",
         category: ["system", "all"],
         type : "system",
-        fromMe :true
+        fromMe :false,
+        usage : "get the time of bot in alive"
 	   }, async (message, client, match, cmd) => {
 	    return await message.reply(await runtime());
 	})
