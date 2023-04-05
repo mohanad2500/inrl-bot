@@ -1,4 +1,5 @@
-const { inrl } = require("../lib")
+
+const { inrl,runtime } = require("../lib")
 const { exec } = require("child_process");
 const Config = require('../config')
 const got = require("got");
@@ -12,9 +13,9 @@ inrl(
 	    desc: 'to restart bot',
         sucReact: "😛",
         category: ["system", "all"],
-        type : "system"
+        type : "system",
+        fromMe :true
 	   }, async (message, client, match, cmd) => {
-	    if(!message.client.isCreator) return await message.replay("action only for owner!");
 	    await message.reply('Restarting please await few second°s')
         process.exit(1);
 	})
@@ -24,15 +25,25 @@ inrl(
 	    desc: 'to install externel Plugin ',
         sucReact: "😛",
         category: ["system", "all"],
-        type : "system"
+        type : "system",
+        fromMe :true
         }, async (message, client, match, cmd) => {
-	if(!message.client.isCreator) return await message.replay("action only for owner!");
-	if(!match) return message.send("need url");
-	if(!match.startsWith("http")) return message.reply("need Url!");
-    message.reply("wait a minut!")
-	let plugin_name, url = match.trim();
+	if (!match || !/\bhttps?:\/\/\S+/gi.test(match)) return await message.send("need gist Url!");
+	let GetOrigin, NewUrl
+	try {
+	GetOrigin = new URL(match)
+	} catch (e){
+	return await message.reply("need an Valid Url");
+	}
+	if(GetOrigin.host === 'gist.github.com') {
+        NewUrl = !match?.toString().endsWith('raw')?match.toString() + '/raw':match.toString()
+    } else {
+        NewUrl = match.toString()
+    } 
+    await message.reply("wait a minut!")
+	let plugin_name, url = NewUrl
         let { body, statusCode } = await got(url).catch((e)=>{
-        message.reply('not valid!')
+        return message.reply('not a valid url!')
        })
        if (statusCode == 200) {
        plugin_name = body.split("pattern")[1].split('[')[1].split(']')[0];
@@ -56,23 +67,23 @@ inrl(
 	    desc: 'to get all externel Plugin ',
         sucReact: "😛",
         category: ["system", "all"],
-        type : "system"
+        type : "system",
+        fromMe :true
 	   }, async (message, client, match, cmd) => {
 	let valueie = await withValue();
-	if(!message.client.isCreator) return await message.replay("action only for owner!");
     let text = "", name, urls;
     if(!match){
     let list = await getListOfPlugin();
-    if(list == 'no data') return message.reply('externel plugins db is empty!')
+    if(list == 'no data') return await message.reply('externel plugins db is empty!')
     for (let i=0;i<list.length;i++) {
     name = list[i].name.replace(valueie,'');
     urls = list[i].url;
     text += name+"\n"+urls+"\n";
     }
     if(text){
-    await message.reply(text)
+    return await message.reply(text)
     }else{
-    message.send('no externel plugins!')
+    return await message.send('no externel plugins!')
        }
     }
 })
@@ -83,31 +94,46 @@ inrl(
 		desc: 'to remove externel Plugin ',
         sucReact: "🐽",
         category: ["system", "all"],
-        type : "system"
+        type : "system",
+        fromMe :true
 	   }, async (message, client, match, cmd) => {
 	   const {PREFIX,FOOTER} = await getVar();
 	   let prefix  = PREFIX == 'false' ? '' : PREFIX;
 	   let valueie = await withValue();
-	   if(!message.client.isCreator) return await message.replay("action only for owner!");
        if(!match) return ;
        match = match.trim();
-       let list = await getListOfPlugin(), name ="";
+       let list = await getListOfPlugin(), name ="", avb=false;
        if(list == 'no data') return message.reply('externel plugins db is empty!')
        for (let i=0;i<list.length;i++) {
        name = list[i].name.replace(valueie,'');
        if(name == match){
              await dlt_plugin(match)
-           }
-       }
-const buttons = [
-        { buttonId: prefix+"restart", buttonText: { displayText: "RESTART"}, type: 1, }
-      ]
-const caption = match+" plugin deleted from the database\nbut the plugins work for befor restarting\nthe project, as you want to remove this \nplugin permently from the code at this \nmomment! click the below \nrestart button"
-const templateButtons = {
+       const buttons = [
+          { buttonId: prefix+"restart", buttonText: { displayText: "RESTART"}, type: 1, }
+       ]
+      const caption = match+" plugin deleted from the database\nbut the plugins work for befor restarting\nthe project, as you want to remove this \nplugin permently from the code at this \nmomment! click the below \nrestart button"
+      const templateButtons = {
       text:'```'+caption+'```',
       footer:FOOTER,
       buttons: buttons,
       headerType: 1
     };
-return await client.sendMessage(message.from,templateButtons, { quoted: message});
+//return await client.sendMessage(message.from,templateButtons, { quoted: message});
+return await message.send("plugin removed successfully!, type restart to remove plugin");
+           } else {
+          avb = true;
+          }
+       }
+       if(avb) return await message.reply("no such plugin in your PLUGINDB");
 })
+inrl(
+	   {
+	    pattern: ['runtime'],
+	    desc: 'get runtime',
+        sucReact: "😛",
+        category: ["system", "all"],
+        type : "system",
+        fromMe :true
+	   }, async (message, client, match, cmd) => {
+	    return await message.reply(runtime);
+	})
