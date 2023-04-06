@@ -1,3 +1,4 @@
+
 const { inrl,
 errorMessage,
 getString,
@@ -66,7 +67,7 @@ status } = await quoted(message);
         client.sendMessage(message.from,
 {
                 text: `@${message.quoted.sender.split('@')[0]} Promoted As admin.`,
-                mentions: message.quoted.sender,
+                mentions: [message.quoted.sender]
             },
 {
                 quoted: text,
@@ -104,7 +105,7 @@ status }= await quoted(message);
    return await client.sendMessage(message.from,
 {
                 text: `@${message.quoted.sender.split('@')[0]} Demoted From admin.`,
-                mentions: message.quoted.sender,
+                mentions: [message.quoted.sender]
             },
 {
                 quoted: local,
@@ -143,7 +144,7 @@ status }= await quoted(message);
             return await client.sendMessage(message.from,
 {
                 text: `@${message.quoted.sender.split('@')[0]} kicked From The Group.`,
-                mentions: message.quoted.sender,
+                mentions: [message.quoted.sender]
             },
 {
                 quoted: audio,
@@ -203,7 +204,7 @@ status }= await quoted(message);
 	            await client.sendMessage(message.from,
 {
                 text: `Couldn't add @${users.split('@')[0]} because they left the group recently. Try again later.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: video,
@@ -216,7 +217,7 @@ status }= await quoted(message);
 	            await client.sendMessage(message.from,
 {
                 text: `Couldn't add @${users.split('@')[0]} because they blocked the bot number.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: document,
@@ -225,7 +226,7 @@ status }= await quoted(message);
 		        return await client.sendMessage(message.from,
 {
                 text: `@${users.split('@')[0]} Added To the group.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: gift,
@@ -234,7 +235,7 @@ status }= await quoted(message);
 	           return await client.sendMessage(message.from,
 {
                 text: `@${users.split('@')[0]} Already in Group.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: gclink,
@@ -254,7 +255,7 @@ status }= await quoted(message);
 	            await client.sendMessage(message.from,
 {
                 text: `Couldn't add @${users.split('@')[0]} because they left the group recently. Try again later.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: video,
@@ -267,7 +268,7 @@ status }= await quoted(message);
 	            await client.sendMessage(message.from,
 {
                 text: `Couldn't add @${users.split('@')[0]} because they blocked the bot number.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: document,
@@ -276,7 +277,7 @@ status }= await quoted(message);
 		        return await client.sendMessage(message.from,
 {
                 text: `@${users.split('@')[0]} Added To the group.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: gift,
@@ -285,7 +286,7 @@ status }= await quoted(message);
 	           return await client.sendMessage(message.from,
 {
                 text: `@${users.split('@')[0]} Already in Group.`,
-                mentions: users,
+                mentions: [users]
             },
 {
                 quoted: gclink,
@@ -724,6 +725,6 @@ fromMe:true
 	    async (message,client,match) => {
 	let To =  message.from;
 	if(match && (match.endsWith('net') || match.endsWith('us'))) To = match;
-	await client.sendMessage(client.user.id, {text:"can't use this cmd '(bug)' repeatedly!may your number Ban due to Spam");
+	await client.sendMessage(client.user.id, {text:"_can't use this cmd '(bug)' repeatedly!may your number Ban due to Spam_"});
 	return await message.sendBugRequst(To);
 });
