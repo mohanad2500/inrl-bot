@@ -1,4 +1,4 @@
-
+// created by @inrl
 const { inrl,
 errorMessage,
 getString,
@@ -178,7 +178,7 @@ onlyGroup : true
 },
 async (message,client,match) => {
   const BotAdmin = await isBotAdmin(message,client);
-  const Isadmin = await isAdmin(message,client);
+  const admin = await isAdmin(message,client);
 const {text,
 document,
 audio,
@@ -305,7 +305,7 @@ onlyGroup : true
 	async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
     if(!message.quoted) return messag.reply('reply to an image!');
@@ -328,7 +328,7 @@ onlyGroup : true
 	async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
     if(!message.quoted) return messag.reply('reply to an image!');
@@ -349,7 +349,7 @@ onlyGroup : true
   async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 const {text,
@@ -384,7 +384,7 @@ onlyGroup : true
   async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 const {text,
@@ -426,7 +426,7 @@ local,
 contact,
 status }= await quoted(message);
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 try {
@@ -456,7 +456,7 @@ local,
 contact,
 status }= await quoted(message);
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 try {
@@ -477,7 +477,7 @@ onlyGroup : true
 },
 async (message,client,match) => {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 const {text,
@@ -516,7 +516,7 @@ local,
 contact,
 status }= await quoted(message);
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 try {
@@ -561,7 +561,7 @@ onlyGroup : true
   async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 const {text,
@@ -590,7 +590,7 @@ onlyGroup : true
   async (message,client,match) => {
 try {
     const BotAdmin = await isBotAdmin(message,client);
-    const Isadmin = await isAdmin(message,client);
+    const admin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin && !message.client.isCreater) return await message.reply('Action only For admin or Owner');
 const {text,
