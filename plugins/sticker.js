@@ -1,6 +1,5 @@
 const { delay } = require("@adiwajshing/baileys");
 const {inrl} = require("../lib/");
-const { isUrl } = require("../lib/Function");
 const fs = require("fs");
 const path = require("path");
 const {getVar} = require('../lib/database/variable');
