@@ -177,7 +177,7 @@ type :'group',
 onlyGroup : true
 },
 async (message,client,match) => {
-  const BotAdmin = await isBotAdmins(message,client);
+  const BotAdmin = await isBotAdmin(message,client);
   const Isadmin = await isAdmin(message,client);
 const {text,
 document,
@@ -304,7 +304,7 @@ onlyGroup : true
 },
 	async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -327,7 +327,7 @@ onlyGroup : true
 },
 	async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -348,7 +348,7 @@ onlyGroup : true
 },
   async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -383,7 +383,7 @@ onlyGroup : true
 },
   async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -425,7 +425,7 @@ video,
 local,
 contact,
 status }= await quoted(message);
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -455,7 +455,7 @@ video,
 local,
 contact,
 status }= await quoted(message);
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -476,7 +476,7 @@ type :'group',
 onlyGroup : true
 },
 async (message,client,match) => {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -515,7 +515,7 @@ video,
 local,
 contact,
 status }= await quoted(message);
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -560,7 +560,7 @@ onlyGroup : true
 },
   async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
@@ -589,7 +589,7 @@ onlyGroup : true
 },
   async (message,client,match) => {
 try {
-    const BotAdmin = await isBotAdmins(message,client);
+    const BotAdmin = await isBotAdmin(message,client);
     const Isadmin = await isAdmin(message,client);
     if(!BotAdmin) return await message.reply('Bot must Be Admin');
     if(!admin) return await message.reply('Action only For admin');
