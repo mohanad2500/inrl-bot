@@ -28,6 +28,7 @@ inrl(
   let data = await getVar();
   let { PASSWORD, CAPTION} = data.data[0];
 if(!message.client.text){
+if(PASSWORD!== PASS ) return message.reply('inavlid or not enterd a valid pasword');
 let ttinullimg = youAreBad(); 
 const Message = {
       image: { url: ttinullimg },
@@ -37,7 +38,6 @@ const Message = {
       }
   }
 );
-
 
 inrl(
   {
