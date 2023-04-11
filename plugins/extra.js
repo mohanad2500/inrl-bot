@@ -14,29 +14,7 @@ let T_L_2 = "Secand text is too long."
 let T_W = "Can use two words"
 let fileName = "GneratedMeme.jpeg";
 
-inrl(
-  {
-    pattern: ["xxx"],
-    desc: "to get randome *** images",
-    sucReact: "🤌",
-    category: ["all","18+"],
-    type : "18+",
-    onlyPm : true,
-    fromMe : true
-  },
-  async (message, client) => {
-  let data = await getVar();
-  let { PASSWORD, CAPTION} = data.data[0];
-if(!message.client.text){
-let ttinullimg = youAreBad(); 
-const Message = {
-      image: { url: ttinullimg },
-      caption: CAPTION
-    };
-    return await client.sendMessage(message.from, Message, { quoted: message });
-      }
-  }
-);
+
 
 inrl(
   {
